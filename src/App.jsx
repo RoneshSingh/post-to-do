@@ -20,6 +20,10 @@ function App() {
       });
   }, []);
 
+  const deleteButton = () => {
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+  };
+
   const addTask = () => {
     const newTask = {
       id: tasks.length + 1,
@@ -39,6 +43,13 @@ function App() {
         {tasks.map((task) => (
           <li className="beauti-list" key={task.id}>
             {task.title}
+            <button
+              onClick={() => {
+                deleteButton(task.id);
+              }}
+            >
+              Remove
+            </button>
           </li>
         ))}
       </ul>
